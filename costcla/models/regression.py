@@ -10,6 +10,16 @@ import math
 from scipy.optimize import minimize
 from sklearn.base import BaseEstimator
 # from sklearn.linear_model.logistic import _intercept_dot
+
+# ==============================
+# NOTE: this fix is VERY ad-hoc, as it should fix the
+#       `pyea` package, as the one imports the deprecated
+#       subpackage of `sklearn`
+import joblib
+import sys
+sys.modules['sklearn.externals.joblib'] = joblib
+# =============================
+
 from pyea import GeneticAlgorithmOptimizer
 from ..metrics import cost_loss
 
